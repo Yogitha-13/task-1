@@ -1,0 +1,7 @@
+git clone
+git status
+git add file name
+git commit -m "reason why we are committing this file"
+git push
+git pull
+git branch
