@@ -1,15 +1,15 @@
 pipeline{
     agent any
-    stage{
-        stage("git checkout") {
-        steps{
-            echo "checking out code from git repository"
+    stages{
+        stage("git checkout"){
+            steps{
+                echo "checking out code from git repo"
+            } 
         }
-    }
-    stage("Building sample pipeline") {
-    steps{
-        echo "Task -2 Building sample CICD pipeline "
-    }
-}
+        stage("Building sample pipeline"){
+            steps{
+                echo "building sample cicd pipeline"
+            }
+        }
     }
 }
