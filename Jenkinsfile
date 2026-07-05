@@ -6,9 +6,15 @@ pipeline{
                 echo "checking out code from git repo"
             } 
         }
-        stage("Building sample pipeline"){
+        stage("Building docker image"){
             steps{
-                echo "building sample cicd pipeline"
+                echo "building docker image using dockerfile"
+                sh "docker build -t microdegree:latest ."
+            }
+        }
+        stage("pushing image to dockerhub"){
+            steps{
+                echo "pushing docker image to dockerhub"
             }
         }
     }
