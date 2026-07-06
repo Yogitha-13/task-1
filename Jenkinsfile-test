@@ -1,0 +1,27 @@
+pipeline{
+    agent any
+    stages{
+        stage("git checkout"){
+            steps{
+                echo "checking out code from git repo"
+            } 
+        }
+        stage("Building docker image"){
+            steps{
+                echo "building docker image using dockerfile"
+                sh "docker build -t microdegree:latest ."
+            }
+        }
+        stage("pushing image to dockerhub"){
+            steps{
+                echo "pushing docker image to dockerhub"
+            }
+        }
+        stage("Deploy docker container"){
+            steps{
+                echo "Deploying docker container"
+            }
+        }
+       
+    }
+}
