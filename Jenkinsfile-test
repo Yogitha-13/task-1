@@ -17,9 +17,9 @@ pipeline{
         }
         stage("pushing image to dockerhub"){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'docker_creds', passwordVariable:' Dockerhub_pass', usernameVariable: 'yogithasn')]) {
-                sh "echo $Dockerhub_pass | docker login -u $yogithasn --password-stdin"
-                sh "docker tag $IMAGE_NAME:latest $yogithasn/$IMAGE_NAME:latest"
+                withCredentials([usernamePassword(credentialsId:'docker_creds', passwordVariable:'DOCKER_PASS', usernameVariable:'DOCKER_US')]) {
+                sh "echo $DOCKER_PASS | docker login -u $DOCKER_US --password-stdin"
+                sh "docker tag $IMAGE_NAME:latest $DOCKER_US/$IMAGE_NAME:latest"
                 sh "docker push $IMAGE_NAME:latest"  
 }
             }
