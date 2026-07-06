@@ -17,7 +17,11 @@ pipeline{
         }
         stage("pushing image to dockerhub"){
             steps{
-                echo "pushing docker image to dockerhub"
+                withCredentials([usernamePassword(credentialsId: 'docker_creds', passwordVariable:' Dockerhub_pass', usernameVariable: 'yogithasn')]) {
+                sh "echo $Dockerhub_pass | docker login -u $yogithasn --password-stdin"
+                sh "docker tag $IMAGE_NAME:latest $yogithasn/$IMAGE_NAME:latest"
+                sh "docker push $IMAGE_NAME:latest"  
+}
             }
         }
         stage("Deploy docker container"){
