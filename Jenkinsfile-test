@@ -26,13 +26,13 @@ pipeline{
         }
         stage("Deploy docker container"){
             steps{
-                sh '''
                 echo "Deploying docker container"
                 echo "pulling docker image from dockerhub"
-                docker pull $IMAGE_NAME
-                echo "Running docker container"
-                docker run -d -p 8000:8000 $IMAGE_NAME
-            '''
+            }
+        }
+        stage("testing webhook"){
+            steps{
+                echo "testing webhook"
             }
         }
        
