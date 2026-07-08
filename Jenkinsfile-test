@@ -25,22 +25,22 @@ pipeline{
             }
         }
         stage("Deploy docker container"){
-            input{
-                message "Deploy docker in ec2. Please confirm to proceed"
-                ok "Deploy"
             steps{
                 echo "Deploying docker container"
                 echo "pulling docker image from dockerhub"
             }
-        }
         }
         stage("testing webhook"){
             steps{
                 echo "testing webhook is working"
             }
         }
-            
+        stage("Deploy docker in production"){
+            input{
+                message "Deploy docker in ec2. Please confirm to proceed"
+                ok "Deploy"
             }
         }
        
-    
+    }
+}
