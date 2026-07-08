@@ -40,6 +40,9 @@ pipeline{
                 message "Deploy docker in ec2. Please confirm to proceed"
                 ok "Deploy"
             }
+            steps{
+                echo "run job once it is approved"
+            }
         }
        
     }
